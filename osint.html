@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Halcyon Sec - Master The Art Of Cyber Resilience" />
+    <meta name="keywords" content="Cybersecurity, IT Services, Consulting" />
+    <title>Halcyon Sec</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Dark background */
+            color: #e2e8f0; /* Light text color */
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: calc(100% - 100px);
+            background: rgba(20, 175, 196, 0.264); /* Teal with transparency */
+            padding: 10px 20px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(100px); /* Blur effect */
+            margin: 10px 60px;
+            border-radius: 10px;
+        }
+
+        nav .logo {
+            font-size: 1.1rem;
+            color: #00A28B; /* Teal color */
+            cursor: pointer;
+            font-family: "Times New Roman", Times, serif;
+            font-weight: 500;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #e2e8f0; /* Light text color */
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            font-family: "Times New Roman", Times, serif;
+            font-weight: 500;
+            text-decoration: none !important;
+        }
+
+        nav ul li a:hover {
+            color: #00A28B; /* Teal hover color */
+        }
+
+        .mobile-nav {
+            display: none;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #downloadBtn {
+            background: #00A28B; /* Teal button */
+            padding: 10px 20px;
+            color: black;
+            border-radius: 100px;
+        }
+
+        #downloadBtn:hover {
+            background: #007f75; /* Darker teal */
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 9px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #2d3748; /* Dark background for scrollbar */
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #00A28B; /* Teal color for the thumb */
+            border-radius: 10px;
+            border: 3px solid #2d3748; /* Darker border */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #007f75; /* Darker teal when hovered */
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: url(osint.png);
+            /* background-image:; */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            filter: brightness(0.9);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 9px;
+            color: white;
+            transition: transform 0.2s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 9px;
+            color: white;
+            transition: transform 0.2s ease-out;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: hsl(171, 100%, 32%); /* Teal button */
+            color: white;
+            border: 2px solid #00A28B;
+        }
+
+        .btn-primary:hover {
+            background-color: rgb(255, 255, 255);
+            color: #27dbab;
+            transform: translateY(-3px);
+        }
+
+        /* Text and Header Styles */
+        h1, h2, h3 {
+            font-weight: 600;
+            color: #e2e8f0; /* Light text color */
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #e2e8f0; /* Light text color */
+        }
+
+        /* Card and Section Styles */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            /* text-align: center; */
+        }
+
+        .card {
+            background-color: #2d3748; /* Dark card background */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05); /* Zoom effect */
+            box-shadow: 0 0 0 4px #00A28B; /* Teal border effect */
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background-color: #131922; /* Teal background */
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .who-we-are-box {
+            background-color: #2d3748; /* Dark background for this section */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        .testimonials-box {
+            background-color: #2d3748; /* Dark background for testimonials */
+            padding: 50px;
+            text-transform: capitalize; 
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Darker header with transparency */
+        header {
+            background-color: rgba(0, 122, 138, 0.85); /* Teal with transparency */
+        }
+        /* courses section to center */
+        .center{
+            display: grid;
+            
+            grid-gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <a style="color: white;" href="home.html#header_intro" onclick="loadPage(event)">Halcyon Sec</a>
+        </div>
+        <div class="mobile-nav"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links">
+            <li><a href="index.html" onclick="loadPage(event)">Home</a></li>
+            <!-- <li><a href="#testimonials" onclick="loadPage(event)">Testimonials</a></li> -->
+            <li><a href="contact.html" onclick="loadPage(event)">Contact</a></li>
+            <li><a href="#faq" onclick="loadPage(event)">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero fade-in">
+        <div>
+            <h1>Dive Deep with DeepEye OSINT</h1>
+            <p>Master OSINT with DeepEye</p>
+            <button class="btn btn-primary mt-8">Enroll now</button>
+        </div>
+    </section>
+
+    <div class="flex flex-col items-center text-center p-6">
+        <h2 class="text-2xl font-bold mb-4 text-white">Course Content</h2>
+    
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-3xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left text-gray-300">
+                
+                <!-- Intro to OSINT -->
+                <div>
+                    <p class="text-lg font-semibold text-teal-400">🔎 Intro to OSINT</p>
+                    <ul class="list-disc pl-5">
+                        <li>OSINT Basics</li>
+                        <li>Google Dorking</li>
+                        <li>Phone OSINT</li>
+                        <li>Email OSINT</li>
+                        <li>Doubt Solving</li>
+                    </ul>
+                </div>
+    
+                <!-- HUMINT -->
+                <div>
+                    <p class="text-lg font-semibold text-teal-400">🧠 HUMINT</p>
+                    <ul class="list-disc pl-5">
+                        <li>Username Lookup</li>
+                        <li>Finding People</li>
+                        <li>Advanced Email OSINT</li>
+                        <li>Advanced Phone OSINT</li>
+                        <li>Case Study</li>
+                        <li>Doubt Solving</li>
+                    </ul>
+                </div>
+    
+                <!-- Social Media OSINT -->
+                <div>
+                    <p class="text-lg font-semibold text-teal-400">💬 Social Media OSINT</p>
+                    <ul class="list-disc pl-5">
+                        <li>Facebook</li>
+                        <li>Instagram</li>
+                        <li>GitHub</li>
+                        <li>Snapchat</li>
+                        <li>Telegram</li>
+                        <li>Maltego</li>
+                        <li>Doubt Solving</li>
+                    </ul>
+                </div>
+    
+                <!-- GEOINT & IMGINT -->
+                <div>
+                    <p class="text-lg font-semibold text-teal-400">🗺 GEOINT & IMGINT</p>
+                    <ul class="list-disc pl-5">
+                        <li>Image OSINT</li>
+                        <li>Geolocation</li>
+                        <li>EXIF Data</li>
+                        <li>Reverse Image Search</li>
+                        <li>Doubt Solving</li>
+                    </ul>
+                </div>
+    
+                <!-- OSINT Tools & AI -->
+                <div>
+                    <p class="text-lg font-semibold text-teal-400">🤖 OSINT Tools & AI</p>
+                    <ul class="list-disc pl-5">
+                        <li>Popular Tools</li>
+                        <li>AI for OSINT</li>
+                        <li>Finding OSINT Tools</li>
+                        <li>Automation with Python</li>
+                        <li>Doubt Solving</li>
+                    </ul>
+                </div>
+    
+                <!-- Case Studies -->
+                <div>
+                    <p class="text-lg font-semibold text-teal-400">🏛 Case Studies</p>
+                    <ul class="list-disc pl-5">
+                        <li>Cyber Investigations</li>
+                        <li>Real-World Scenarios</li>
+                    </ul>
+                </div>
+    
+                <!-- Final & Certification -->
+                <div class="col-span-2">
+                    <p class="text-lg font-semibold text-teal-400">🏆 Final & Certification</p>
+                    <ul class="list-disc pl-5">
+                        <li>Practical Challenge</li>
+                        <li>Q&A</li>
+                        <li>Certification</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Enroll Button -->
+        <button class="btn btn-primary mt-6 px-6 py-3 rounded-full text-lg" onclick="openModal()">
+            Enroll Now 🚀
+        </button>
+    
+        <!-- Modal -->
+        <div id="enrollModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+            <div class="bg-gray-900 p-6 rounded-lg shadow-lg w-96 text-center">
+                <h3 class="text-xl font-bold text-white mb-4">Enroll</h3>
+                <div class="flex flex-col space-y-4">
+                    <a href="https://t.me/halcyonsecadmin?text=I%20want%20to%20Enroll%20Deep%20Eye%20OSINT%20Course" target="_blank" class="px-4 py-2 bg-blue-500 text-white rounded-lg">
+                        📢 via Telegram
+                    <a href="https://wa.link/xomexp" target="_blank" class="px-4 py-2 bg-green-500 text-white rounded-lg">
+                        💬 via WhatsApp
+                    </a>
+                    <button onclick="closeModal()" class="px-4 py-2 bg-red-500 text-white rounded-lg">
+                        ❌ Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function openModal() {
+            document.getElementById('enrollModal').classList.remove('hidden');
+        }
+        
+        function closeModal() {
+            document.getElementById('enrollModal').classList.add('hidden');
+        }
+    </script>
+    
+    
+    
+
+    <!-- <section id="contact" class="container py-20 fade-in">
+        <h2>Contact Us</h2>
+        <p>Interested in working with us? Reach out today to discuss how we can help you build a resilient cyber infrastructure.</p>
+        <button class="btn btn-primary">Get in Touch</button>
+    </section> -->
+
+    <footer class="footer">
+        <p>&copy; 2023 Halcyon Sec. All rights reserved.</p>
+        <p>
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+        </p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            const heroText = document.querySelector('.hero h1');
+            const heroParagraph = document.querySelector('.hero p');
+            let scrollPosition = window.scrollY;
+            let scaleValue = 1 - scrollPosition / 3000; 
+
+            if (scaleValue < 0.5) scaleValue = 0.5; 
+
+            heroText.style.transform = `scale(${scaleValue})`;
+            heroParagraph.style.transform = `scale(${scaleValue})`;
+        });
+    </script>
+</body>
+
+</html>
